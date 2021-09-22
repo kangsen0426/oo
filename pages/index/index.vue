@@ -12,7 +12,7 @@
 				</view>
 			</view>
 			<view class="h_right">
-				<view class="search">
+				<view class="search" @click="toSearch">
 					<i class="iconfont icon-sousuo"></i>
 				</view>
 				<view class="add">
@@ -87,6 +87,12 @@
 			getFriends(){
 				this.friends = datas.friends()
 				console.log(this.friends)
+			},
+			toSearch(){
+				
+				uni.navigateTo({
+					url:"../search/search"
+				})
 			}
 		}
 	}
