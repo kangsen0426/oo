@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 2820721 */
-  src: url('//at.alicdn.com/t/font_2820721_qhvn718dks.woff2?t=1632217381626') format('woff2'),
-       url('//at.alicdn.com/t/font_2820721_qhvn718dks.woff?t=1632217381626') format('woff'),
-       url('//at.alicdn.com/t/font_2820721_qhvn718dks.ttf?t=1632217381626') format('truetype');
+  src: url('//at.alicdn.com/t/font_2820721_b2t05tme69c.woff2?t=1632365485042') format('woff2'),
+       url('//at.alicdn.com/t/font_2820721_b2t05tme69c.woff?t=1632365485042') format('woff'),
+       url('//at.alicdn.com/t/font_2820721_b2t05tme69c.ttf?t=1632365485042') format('truetype');
 }
 
 .iconfont {
@@ -11,6 +11,26 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-arrow-right:before {
+  content: "\e665";
+}
+
+.icon-xingbienv:before {
+  content: "\e605";
+}
+
+.icon-xingbienan:before {
+  content: "\e606";
+}
+
+.icon-xingbie:before {
+  content: "\e614";
+}
+
+.icon-shenglvehao:before {
+  content: "\e708";
 }
 
 .icon-yanjing-bi:before {

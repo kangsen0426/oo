@@ -143,6 +143,7 @@
 	.container {
 
 		height: 100vh;
+		padding-top: var(--status-bar-height);
 		// background-color: pink;
 
 		.top {
@@ -152,6 +153,7 @@
 			text-align: center;
 			padding-left: 30rpx;
 			padding-right: 30rpx;
+			// padding-top: var(--status-bar-height);
 			// background-color: yellow;
 
 			.back {

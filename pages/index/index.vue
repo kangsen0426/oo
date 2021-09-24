@@ -2,7 +2,8 @@
 	<view class="content">
 		<view class="header">
 			<view class="h_left">
-				<view class="image"></view>
+				<navigator class="image" url="../userhome/userhome?id=aaa"></navigator>
+				<!-- <view class="image" @click="toUserInfo"></view> -->
 				<view class="user">
 					<view class="username">千北</view>
 					<view class="state">
@@ -93,7 +94,13 @@
 				uni.navigateTo({
 					url:"../search/search"
 				})
-			}
+			},
+			// toUserInfo(){
+			// 	//跳转至个人信息
+			// 	uni.navigateTo({
+			// 		url:"../userhome/userhome"
+			// 	})
+			// }
 		}
 	}
 </script>

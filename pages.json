@@ -35,6 +35,24 @@
             }
             
         }
+        ,{
+            "path" : "pages/userhome/userhome",
+            "style" :                                                                                    
+            {
+               "navigationStyle":"custom",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/userDetail/userDetail",
+            "style" :                                                                                    
+            {
+                "navigationStyle":"custom",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

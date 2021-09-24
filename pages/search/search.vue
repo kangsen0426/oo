@@ -9,8 +9,11 @@
 				<text>用户</text>
 				
 				<view class="list_item" v-for="item in userDataArr" :key="item.id">
+					
 					<view class="left_pic">
-						<image :src="item.imgUrl"></image>
+						<navigator url="../userhome/userhome?id=aaa">
+							<image :src="item.imgUrl"></image>
+						</navigator>
 					</view>
 					<view class="right_info">
 						<view class="username">
