@@ -24,7 +24,7 @@
 
 		<view class="message_list">
 
-			<view class="list_item">
+			<view class="list_item" @click="friendRequest">
 				<view class="item_left request">
 					<i class="iconfont icon-addpeople"></i>
 				</view>
@@ -85,9 +85,15 @@
 			changeTime(date){
 				return dateTime.dateTime(date);
 			},
+			
 			getFriends(){
 				this.friends = datas.friends()
 				console.log(this.friends)
+			},
+			friendRequest(){
+				uni.navigateTo({
+					url:"../friendRequest/friendRequest"
+				})
 			},
 			toSearch(){
 				
