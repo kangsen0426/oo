@@ -41,9 +41,34 @@ export default {
 
 			return "昨天 " + h + ':' + m
 		}
-		else {
-			//大于两天
-			return Y + "/" + M + "/" + D
+		else if(Y === nY){
+			//今年
+			if(h < 10){
+				h = '0' + h
+			}
+			
+			if(m < 10){
+				m = '0' + m;
+			}
+			
+			return M + '月' + D + '日 ' + h + ':' + m;
+		}else{
+			//大于今年
+			if(h < 10){
+				h = '0' + h
+			}
+			
+			if(m < 10){
+				m = '0' + m;
+			}
+			
+			return Y + '年' + M + '月' + D + '日 ' + h + ':' + m;
+			
 		}
+		// else {
+		// 	//大于两天
+		// 	return Y + "/" + M + "/" + D
+		// }
 	}
+	
 }

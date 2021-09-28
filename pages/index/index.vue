@@ -43,9 +43,9 @@
 
 
 
-			<view class="list_item" v-for="(item,index) in friends" :key="index">
+			<view class="list_item" v-for="(item,index) in friends" :key="index" @click="toChat(item.id)">
 				<view class="item_left">
-					<image src="../../static/image/person.jpg"></image>
+					<image src="../../static/image/person.jpg" mode="aspectFill"></image>
 				</view>
 				<view class="item_right">
 					<view class="item_top">
@@ -101,6 +101,11 @@
 					url:"../search/search"
 				})
 			},
+			toChat(id){
+				uni.navigateTo({
+					url:`../chatRoom/chatRoom?id=${id}`
+				})
+			}
 			// toUserInfo(){
 			// 	//跳转至个人信息
 			// 	uni.navigateTo({

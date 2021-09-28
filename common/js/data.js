@@ -71,5 +71,182 @@ export default {
 		]
 		
 		return isfriend
+	},
+	
+	//聊天记录
+	chatMessage:function(){
+		let message = [
+			{
+					id: 'a', //用户 id
+					imgurl: '../../static/image/person.jpg',
+					message: '近似的和好的办法似乎很嗲还不能覅汉诺夫卡你发你覅发', //信息，可以是图片链接，视频链接等等
+					type: 0, //消息的类型  0 文字  1 图片  2 视频
+					tip: 1, //第几条消息
+					time: new Date() - 1000 * 60 * 60
+				},
+				{
+					id: 'b', //用户 id
+					imgurl: '../../static/image/person.jpg',
+					message: 'sdasdsa速度', //信息，可以是图片链接，视频链接等等
+					type: 0, //消息的类型  0 文字  1 图片  2 视频
+					tip: 2, //第几条消息
+					time: new Date() - 1000 * 60 * 57
+				},
+				{
+					id: 'a', //用户 id
+					imgurl: '../../static/image/person.jpg',
+					message: '不是那你发', //信息，可以是图片链接，视频链接等等
+					type: 0, //消息的类型  0 文字  1 图片  2 视频
+					tip: 3, //第几条消息
+					time: new Date() - 1000 * 60 * 43
+				},
+				{
+					id: 'a', //用户 id
+					imgurl: '../../static/image/person.jpg',
+					message: '../../static/image/person.jpg', //信息，可以是图片链接，视频链接等等
+					type: 1, //消息的类型  0 文字  1 图片  2 视频
+					tip: 4, //第几条消息
+					time: new Date() - 1000 * 60 * 42
+				},
+				{
+					id: 'b', //用户 id
+					imgurl: '../../static/image/person.jpg',
+					message: '方法发发发嘎嘎叫', //信息，可以是图片链接，视频链接等等
+					type: 0, //消息的类型  0 文字  1 图片  2 视频
+					tip: 5, //第几条消息
+					time: new Date() - 1000 * 60 * 42
+				},
+				{
+					id: 'a', //用户 id
+					imgurl: '../../static/image/person.jpg',
+					message: '啊啊的发', //信息，可以是图片链接，视频链接等等
+					type: 0, //消息的类型  0 文字  1 图片  2 视频
+					tip: 6, //第几条消
+					time: new Date() - 1000 * 60 * 40
+				},
+				{
+					id: 'b', //用户 id
+					imgurl: '../../static/image/person.jpg',
+					message: '../../static/image/logo.png', //信息，可以是图片链接，视频链接等等
+					type: 1, //消息的类型  0 文字  1 图片  2 视频
+					tip: 7, //第几条消息
+					time: new Date() - 1000 * 60 * 30
+				},
+				{
+					id: 'a', //用户 id
+					imgurl: '../../static/image/person.jpg',
+					message: '近似的和好的办法似乎很嗲还不能覅汉诺夫卡你发你覅发', //信息，可以是图片链接，视频链接等等
+					type: 0, //消息的类型  0 文字  1 图片  2 视频
+					tip: 8, //第几条消息
+					time: new Date() - 1000 * 60 * 25
+				},
+				{
+					id: 'b', //用户 id
+					imgurl: '../../static/image/person.jpg',
+					message: '阿斯顿发哈法国帮帮', //信息，可以是图片链接，视频链接等等
+					type: 0, //消息的类型  0 文字  1 图片  2 视频
+					tip: 9, //第几条消息
+					time: new Date() - 1000 * 60 * 22
+				},
+				{
+					id: 'a', //用户 id
+					imgurl: '../../static/image/person.jpg',
+					message: '给你上帝宾馆附近', //信息，可以是图片链接，视频链接等等
+					type: 0, //消息的类型  0 文字  1 图片  2 视频 3 音频 4 位置
+					tip: 10, //第几条消息
+					time: new Date() - 1000 * 60 * 10
+				},
+				{
+					id: 'b', //用户 id
+					imgurl: '../../static/image/person.jpg',
+					message: 'adadgfggg', //信息，可以是图片链接，视频链接等等
+					type: 0, //消息的类型  0 文字  1 图片  2 视频 3 音频 4 位置
+					tip: 11, //第几条消息
+					time: new Date() - 1000 * 60 * 10
+				},
+				{
+					id: 'b', //用户 id
+					imgurl: '../../static/image/person.jpg',
+					message: '案说法户籍卡是否', //信息，可以是图片链接，视频链接等等
+					type: 0, //消息的类型  0 文字  1 图片  2 视频 3 音频 4 位置
+					tip: 12, //第几条消息
+					time: new Date() - 1000 * 60 * 10
+				},
+				{
+					id: 'b', //用户 id
+					imgurl: '../../static/image/person.jpg',
+					message: 'adadgfggg', //信息，可以是图片链接，视频链接等等
+					type: 0, //消息的类型  0 文字  1 图片  2 视频 3 音频 4 位置
+					tip: 13, //第几条消息
+					time: new Date() - 1000 * 60 * 10
+				},
+				{
+					id: 'a', //用户 id
+					imgurl: '../../static/image/person.jpg',
+					message: '安抚那就阿富汗', //信息，可以是图片链接，视频链接等等
+					type: 0, //消息的类型  0 文字  1 图片  2 视频 3 音频 4 位置
+					tip: 14, //第几条消息
+					time: new Date() - 1000 * 60 * 10
+				},
+				{
+					id: 'b', //用户 id
+					imgurl: '../../static/image/person.jpg',
+					message: '啊发发给', //信息，可以是图片链接，视频链接等等
+					type: 0, //消息的类型  0 文字  1 图片  2 视频 3 音频 4 位置
+					tip: 15, //第几条消息
+					time: new Date() - 1000 * 60 * 10
+				},
+				{
+					id: 'a', //用户 id
+					imgurl: '../../static/image/person.jpg',
+					message: '给我行家给你发几个你', //信息，可以是图片链接，视频链接等等
+					type: 0, //消息的类型  0 文字  1 图片  2 视频 3 音频 4 位置
+					tip: 16, //第几条消息
+					time: new Date() - 1000 * 60 * 10
+				},
+				{
+					id: 'b', //用户 id
+					imgurl: '../../static/image/person.jpg',
+					message: 'afamask的功能', //信息，可以是图片链接，视频链接等等
+					type: 0, //消息的类型  0 文字  1 图片  2 视频 3 音频 4 位置
+					tip: 17, //第几条消息
+					time: new Date() - 1000 * 60 * 10
+				},
+				{
+					id: 'a', //用户 id
+					imgurl: '../../static/image/person.jpg',
+					message: 'fgajshgjas', //信息，可以是图片链接，视频链接等等
+					type: 0, //消息的类型  0 文字  1 图片  2 视频 3 音频 4 位置
+					tip: 18, //第几条消息
+					time: new Date() - 1000 * 60 * 10
+				},
+				{
+					id: 'b', //用户 id
+					imgurl: '../../static/image/person.jpg',
+					message: 'afamask按返回键啊', //信息，可以是图片链接，视频链接等等
+					type: 0, //消息的类型  0 文字  1 图片  2 视频 3 音频 4 位置
+					tip: 19, //第几条消息
+					time: new Date() - 1000 * 60 * 10
+				},
+				{
+					id: 'a', //用户 id
+					imgurl: '../../static/image/person.jpg',
+					message: 'asfhj 阿法狗那就看', //信息，可以是图片链接，视频链接等等
+					type: 0, //消息的类型  0 文字  1 图片  2 视频 3 音频 4 位置
+					tip: 20, //第几条消息
+					time: new Date() - 1000 * 60 * 10
+				},
+				{
+					id: 'b', //用户 id
+					imgurl: '../../static/image/person.jpg',
+					message: 'afamaskfak反感基本覆盖把大部分国家打包价格吧啊不过看吧等级不够按点击空白官方尽快把十点半进口报关金卡戴珊不过就按表达式公开八十八给金卡打不过卡不卡给把科比喀巴空军给把科比个卡比开噶包括给把科比给吧', //信息，可以是图片链接，视频链接等等
+					type: 0, //消息的类型  0 文字  1 图片  2 视频 3 音频 4 位置
+					tip: 21, //第几条消息
+					time: new Date() - 1000 * 60 * 10
+				},
+			
+		]
+		
+		return message;
 	}
 }
