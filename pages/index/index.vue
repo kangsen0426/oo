@@ -65,7 +65,10 @@
 
 
 		</view>
+		
+		
 	</view>
+
 </template>
 
 <script>
@@ -124,6 +127,7 @@
 		height: 100%;
 		padding-top: var(--status-bar-height);
 		padding-bottom: 80rpx;
+		overflow-x: hidden;
 		// background-color: #3F536E;
 
 

@@ -4,69 +4,73 @@
 			"path": "pages/index/index",
 			"style": {
 				// "navigationBarTitleText": "uni-app"
-				"navigationStyle":"custom"
+				"navigationStyle": "custom"
 			}
+		}, {
+			"path": "pages/login/login",
+			"style": {
+				// "navigationBarTitleText": "",
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom"
+			}
+
+		}, {
+			"path": "pages/singup/singup",
+			"style": {
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/search/search",
+			"style": {
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/userhome/userhome",
+			"style": {
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/userDetail/userDetail",
+			"style": {
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/friendRequest/friendRequest",
+			"style": {
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/chatRoom/chatRoom",
+			"style": {
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false
+			}
+
 		}
 	    ,{
-            "path" : "pages/login/login",
+            "path" : "pages/Contact/Contact",
             "style" :                                                                                    
             {
-                // "navigationBarTitleText": "",
-                "enablePullDownRefresh": false,
-				"navigationStyle":"custom"
-            }
-            
-        }
-        ,{
-            "path" : "pages/singup/singup",
-            "style" :                                                                                    
-            {
-               "navigationStyle":"custom",
+                "navigationBarTitleText": "联系人",
                 "enablePullDownRefresh": false
             }
             
         }
         ,{
-            "path" : "pages/search/search",
+            "path" : "pages/actives/actives",
             "style" :                                                                                    
             {
-               "navigationStyle":"custom",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/userhome/userhome",
-            "style" :                                                                                    
-            {
-               "navigationStyle":"custom",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/userDetail/userDetail",
-            "style" :                                                                                    
-            {
-                "navigationStyle":"custom",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/friendRequest/friendRequest",
-            "style" :                                                                                    
-            {
-                "navigationStyle":"custom",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/chatRoom/chatRoom",
-            "style" :                                                                                    
-            {
-               "navigationStyle":"custom",
+                "navigationBarTitleText": "动态",
                 "enablePullDownRefresh": false
             }
             
@@ -77,5 +81,29 @@
 		"navigationBarTitleText": "uni-app",
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar": {
+		"color": "#333",
+		"selectedColor": "deepskyblue",
+		"backgroundColor": "#ffffff",
+		"borderStyle": "#F0F0F0",
+		"list": [
+			{
+				"pagePath": "pages/index/index",
+				"iconPath": "static/image/message1.png",
+				 "selectedIconPath": "static/image/message2.png"
+			},
+			{
+				"pagePath": "pages/Contact/Contact",
+				"iconPath": "static/image/contact1.png",
+				"selectedIconPath": "static/image/contact2.png"
+			},
+			{
+				"pagePath": "pages/actives/actives",
+				"iconPath": "static/image/active1.png",
+				"selectedIconPath": "static/image/active2.png"
+			}
+		]
+
 	}
 }
