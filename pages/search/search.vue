@@ -1,15 +1,16 @@
 <template>
 	<view class="content">
 		<view class="header">
-			<input class="search" confirm-type="search" placeholder="搜索用户/群" type="text" v-model="searchInfo" @confirm="searchGo" @input="search"/>
+			<input class="search" confirm-type="search" placeholder="搜索用户/群" type="text" v-model="searchInfo"
+				@confirm="searchGo" @input="search" />
 			<text class="nosearch" @click="backIndex">取消</text>
 		</view>
 		<view class="list">
 			<view class="user_list">
 				<text>用户</text>
-				
-				<view class="list_item" v-for="item in userDataArr" :key="item.id">
-					
+
+				<view class="list_item" v-for="item in userdataArr" :key="item.id">
+
 					<view class="left_pic">
 						<navigator url="../userhome/userhome?id=aaa">
 							<image :src="item.imgUrl"></image>
@@ -18,7 +19,7 @@
 					<view class="right_info">
 						<view class="username">
 							<view class="top" v-html="item.name">
-								
+
 							</view>
 							<view class="email" v-html="item.email"></view>
 						</view>
@@ -26,13 +27,13 @@
 						<view class="optionBtn addfriend" v-else>加好友</view>
 					</view>
 				</view>
-				
-				
-				
+
+
+
 			</view>
 			<view class="group_list">
 				<text>群组</text>
-				
+
 				<view class="list_item">
 					<view class="left_pic">
 						<image src="../../static/image/person.jpg"></image>
@@ -41,12 +42,12 @@
 						<view class="username">
 							<span>你还发货时封杀</span>
 							撒大大
-							</view>
+						</view>
 						<view class="optionBtn">发消息</view>
 						<!-- <view class="optionBtn addfriend">加群组</view> -->
 					</view>
 				</view>
-				
+
 				<view class="list_item">
 					<view class="left_pic">
 						<image src="../../static/image/person.jpg"></image>
@@ -60,93 +61,149 @@
 						<view class="optionBtn addfriend">加群组</view>
 					</view>
 				</view>
-				
+
 			</view>
 		</view>
 	</view>
 </template>
 
 <script>
-	
 	import datas from "../../common/js/data.js"
-	
+
 	export default {
 		data() {
 			return {
-				searchInfo:"",//搜索框的内容,
-				userDataArr:[],//搜索到的用户数据
+				searchInfo: "", //搜索框的内容,
+				userdataArr: [], //搜索到的用户数据\
+				dataArr: [],
+				uid: ''
 			};
 		},
-		methods:{
-			backIndex(){
-				
+		onLoad(option) {
+			uni.getStorage({
+				key: "userInfo",
+				success: (res) => {
+					this.uid = res.data.id
+				}
+			})
+		},
+		methods: {
+			backIndex() {
+
 				uni.navigateBack({
-					delta:1
+					delta: 1
 				})
 			},
-			searchGo(){
-	
+			searchGo() {
+
 				console.log(this.searchInfo)
-				
+
 				//清空输入框
 				this.searchInfo = ""
-				
+
 			},
-			search(e){
+			search(e) {
 				//实时搜索
 				this.searchUser(this.searchInfo)
-				
+
 			},
-			searchUser(str){
-				
+			getUserData(str) {
+
+				uni.showLoading()
+
+				//发送请求搜索
+				uni.request({
+					url: '/search/user',
+					data: {
+						name: this.searchInfo,
+						email: this.searchInfo
+					},
+					method: "POST",
+					success: (res) => {
+						uni.hideLoading()
+						console.log(res.data);
+						this.dataArr = res.data.msg
+						this.expStr(str);
+
+					},
+					fail: (e) => {
+						uni.hideLoading()
+						console.log(e)
+					}
+				});
+
+			},
+			searchUser(str) {
+
 				//搜索匹配关键字
-				
-				this.userDataArr = []
-				
-				if(str == "") return;
-				
-				let dataArr = datas.friends();
-				
+
+				this.userdataArr = []
+
+				if (str == "") return;
+
+				// let this.dataArr = datas.friends();
+				//获取数据
+				this.getUserData(str)
+
+
 				//匹配规则
-				let exp = eval("/"+str+"/g")
-				
-				for(let i = 0; i < dataArr.length;i++){
-					if(dataArr[i].name.search(str) != -1 || dataArr[i].email.search(str) != -1){
-						//有匹配项
-						
-						//判断是否为好友
-						this.isfriend(dataArr[i]);
-						
-						dataArr[i].name = dataArr[i].name.replace(exp,"<span>"+str+"</span>")
-						dataArr[i].email = dataArr[i].email.replace(exp,"<span>"+str+"</span>")
-						
-						console.log(dataArr[i].name)
-						this.userDataArr.push(dataArr[i])
-					}
-				}
-				console.log(this.userDataArr)
+
 			},
-			isfriend(user){
-				let tip = 0;
-				
-				let userArr = datas.isFriend();
-				
-				for(let i = 0; i < userArr.length;i++){
-					if(userArr[i].friend == user.id){
-						tip = 1;
+			isfriend(user) {
+				//发送请求搜索
+				uni.request({
+					url: '/search/isfriend',
+					data: {
+						uid: this.uid,
+						fid: user._id
+					},
+					method: "POST",
+					success: (res) => {
+						console.log(res)
+						if (res.data.status === 400) {
+							//不是好友
+							user.tip = 0
+						} else {
+							user.tip = 1
+						}
+					},
+					fail: (e) => {
+
+						console.log(e)
 					}
-					user.tip = tip;
+				});
+			},
+			expStr(str) {
+				let exp = eval("/" + str + "/g")
+
+				for (let i = 0; i < this.dataArr.length; i++) {
+					if (this.dataArr[i].name.search(str) != -1 || this.dataArr[i].email.search(str) != -1) {
+						//有匹配项
+
+						//判断是否为好友
+						this.isfriend(this.dataArr[i]);
+
+						this.dataArr[i].name = this.dataArr[i].name.replace(exp, "<span>" + str + "</span>")
+						this.dataArr[i].email = this.dataArr[i].email.replace(exp, "<span>" + str + "</span>")
+
+						console.log(this.dataArr[i].name)
+						this.userdataArr.push(this.dataArr[i])
+						
+						
+					}
 				}
+				console.log(this.userdataArr)
 			}
-			
+
 		}
 	}
 </script>
 
 <style lang="less">
-	.content{
+	.content {
 		padding-top: var(--status-bar-height);
-		.header{
+
+		.header {
 			position: fixed;
 			top: 0;
 			left: 0;
@@ -158,8 +215,8 @@
 			align-items: center;
 			// background-color: pink;
 			padding-top: var(--status-bar-height);
-			
-			.search{
+
+			.search {
 				width: 600rpx;
 				height: 70rpx;
 				text-align: center;
@@ -167,55 +224,58 @@
 				background-color: #F3F4F6;
 			}
 		}
-		
-		.list{
+
+		.list {
 			padding-top: 120rpx;
 			padding-left: 20rpx;
 			padding-right: 20rpx;
 			color: #30313A;
-			
-			.user_list{
+
+			.user_list {
 				margin-bottom: 40rpx;
 			}
-			
-			
-			.list_item{
+
+
+			.list_item {
 				display: flex;
 				align-items: center;
 				height: 110rpx;
 				margin-bottom: 20rpx;
 				// background-color: pink;
-				
-				.left_pic{
+
+				.left_pic {
 					width: 90rpx;
 					height: 90rpx;
 					margin-right: 30rpx;
+
 					// background-color: red;
-					image{
+					image {
 						width: 90rpx;
 						height: 90rpx;
 						border-radius: 20rpx;
 					}
 				}
-				.right_info{
+
+				.right_info {
 					width: calc(100% - 130rpx);
 					height: 90rpx;
 					display: flex;
 					align-items: center;
 					justify-content: space-between;
+
 					// background-color: yellow;
-					.username{
-						
-						span{
+					.username {
+
+						span {
 							color: #89C8FF;
 						}
-						
-						.email{
+
+						.email {
 							font-size: 18rpx;
 						}
 					}
-					
-					.optionBtn{
+
+					.optionBtn {
 						width: 140rpx;
 						height: 60rpx;
 						text-align: center;
@@ -224,10 +284,10 @@
 						font-size: 28rpx;
 						color: white;
 						background-color: #e95a61;
-						
+
 					}
-					
-					.addfriend{
+
+					.addfriend {
 						background-color: #89C8FF;
 						color: #EDF7FF;
 					}

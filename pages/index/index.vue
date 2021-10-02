@@ -2,10 +2,12 @@
 	<view class="content">
 		<view class="header">
 			<view class="h_left">
-				<navigator class="image" url="../userhome/userhome?id=aaa"></navigator>
+				<navigator class="image" :url="'../userhome/userhome?id='+userid">
+					<image :src="imgurl" mode="aspectFill"></image>
+				</navigator>
 				<!-- <view class="image" @click="toUserInfo"></view> -->
 				<view class="user">
-					<view class="username">千北</view>
+					<view class="username">{{username}}</view>
 					<view class="state">
 						<view class="point"></view>
 						在线
@@ -79,12 +81,32 @@
 		data() {
 			return {
 				friends:[],
+				imgurl:"../userhome/userhome",
+				userid:'',
+				username:'千北'
 			}
 		},
 		onLoad() {
 			this.getFriends()
+			this.getUserInfo()
 		},
 		methods: {
+			getUserInfo(){
+				
+				uni.getStorage({
+					key:"userInfo",
+					success:(data)=>{
+						this.username = data.data.name
+						this.imgurl = data.data.imgurl
+						this.userid = data.data.id
+						console.log(data)
+						
+					},
+					fail:(e)=>{
+						console.log(e)
+					}
+				})
+			},
 			changeTime(date){
 				return dateTime.dateTime(date);
 			},
@@ -157,9 +179,15 @@
 				.image {
 					width: 80rpx;
 					height: 80rpx;
-					background: url(../../static/image/person.jpg) no-repeat;
-					background-size: cover;
-					border-radius: 10rpx;
+					// background: url(../../static/image/person.jpg) no-repeat;
+					// background-size: cover;
+					// border-radius: 10rpx;
+					
+					image{
+						width: 80rpx;
+						height: 80rpx;
+						border-radius: 10rpx;
+					}
 				}
 
 				.user {

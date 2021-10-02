@@ -64,6 +64,15 @@
 							this.isRight = false
 							uni.hideLoading()
 						}else{
+							
+							//本地存储
+							uni.setStorage({
+								key:"userInfo",
+								data:data.data.msg
+							})
+							
+							console.log(data)
+							
 							this.isRight = true
 							this.toIndex()
 							
@@ -96,7 +105,7 @@
 				})
 			},
 			toIndex(){
-				uni.redirectTo({
+				uni.switchTab({
 					url:"../index/index"
 				})
 				
