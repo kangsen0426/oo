@@ -48,7 +48,43 @@
 			},
 			login(){
 				
+				uni.showLoading()
+				
 				//发送请求
+				uni.request({
+					url:"/singin/match",
+					data:{
+						name:this.userInfo.userName,
+						email:this.userInfo.userName,
+						pwd:this.userInfo.userPsd
+					},
+					method:"POST",
+					success:(data)=>{
+						if(data.data.status === 400){
+							this.isRight = false
+							uni.hideLoading()
+						}else{
+							this.isRight = true
+							this.toIndex()
+							
+							uni.hideLoading()
+							uni.showToast({
+								icon:"success",
+								title:"登入成功"
+							})
+							console.log("ok")
+						
+						}
+					},
+					fail: (err) => {
+						console.log(err)
+						uni.hideLoading()
+						uni.showToast({
+							icon:"error",
+							title:"失败"
+						})
+					}
+				})
 				
 				
 				console.log(this.userInfo)
@@ -58,6 +94,12 @@
 				uni.navigateTo({
 					url:"../singup/singup"
 				})
+			},
+			toIndex(){
+				uni.redirectTo({
+					url:"../index/index"
+				})
+				
 			}
 		}
 	}

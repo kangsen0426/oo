@@ -128,6 +128,61 @@
 				console.log(this.formData)
 				
 				//发送请求
+				
+				//1.验证改账号是否已经注册
+				uni.request({
+					url:"/singup/judge",
+					data:{
+						email:this.formData.userEmail,
+						name:this.formData.username,
+					},
+					method:"POST",
+					success:(data)=>{
+						console.log(data)
+						
+						if(data.data.status === 500){
+							//已注册
+							uni.showToast({
+							    title: data.data.msg,
+							    icon:"none"
+								
+							});
+							
+							console.log("邮箱或用户名已注册过啦~")
+							
+							
+						}else{
+							//注册新用户
+							uni.request({
+								url:"/singup/add",
+								data:{
+									mail:this.formData.userEmail,
+									pwd:this.formData.userPsd,
+									name:this.formData.username,
+								},
+								method:"POST",
+								success:(data)=>{
+									console.log(data)
+									uni.showToast({
+									    title: '注册成功',
+									    icon:"success"
+									});
+								},
+								fail: (err) => {
+									console.log(err)
+								}
+							})
+						}
+					},
+					fail: (err) => {
+						console.log(err)
+					}
+				})
+				
+				
+				
+				
+				
 			},
 			toLogin(){
 				//返回登入页面
